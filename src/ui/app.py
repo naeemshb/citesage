@@ -34,7 +34,9 @@ st.markdown("""
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
     /* Reset */
-    .stApp { font-family: 'Inter', -apple-system, sans-serif; background: #f9fafb; }
+    .stApp { font-family: 'Inter', -apple-system, sans-serif; background: #f9fafb; color: #1a1a2e; }
+    .stApp p, .stApp span, .stApp label, .stApp div, .stApp li, .stApp td, .stApp th { color: inherit; }
+    .stMarkdown, .stMarkdown p { color: #1a1a2e !important; }
     #MainMenu, footer, header { visibility: hidden; }
     .block-container { padding-top: 0rem; max-width: 960px; }
     .stDeployButton { display: none; }
@@ -233,19 +235,41 @@ st.markdown("""
         line-height: 1.5;
     }
 
-    /* Search box */
-    .stTextInput > div > div > input {
+    /* Force all inputs to dark text — overrides Streamlit dark theme */
+    .stApp input,
+    .stApp input[type="text"],
+    .stApp textarea,
+    .stTextInput input,
+    .stTextInput > div > div > input,
+    [data-testid="stTextInput"] input,
+    [data-baseweb="input"] input,
+    [data-baseweb="base-input"] input {
         font-size: 1.05rem !important;
         padding: 16px 24px !important;
         border-radius: 14px !important;
         border: 2px solid #e2e8f0 !important;
         background: #ffffff !important;
+        color: #1a1a2e !important;
+        -webkit-text-fill-color: #1a1a2e !important;
+        caret-color: #1a1a2e !important;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
         transition: all 0.25s ease !important;
     }
-    .stTextInput > div > div > input:focus {
+    .stApp input:focus,
+    .stApp input[type="text"]:focus,
+    .stTextInput input:focus,
+    [data-testid="stTextInput"] input:focus,
+    [data-baseweb="input"] input:focus,
+    [data-baseweb="base-input"] input:focus {
         border-color: #5b5fc7 !important;
         box-shadow: 0 4px 20px rgba(91,95,199,0.12) !important;
+        color: #1a1a2e !important;
+        -webkit-text-fill-color: #1a1a2e !important;
+    }
+    /* Placeholder text */
+    .stApp input::placeholder {
+        color: #94a3b8 !important;
+        -webkit-text-fill-color: #94a3b8 !important;
     }
 
     /* Powered by */
